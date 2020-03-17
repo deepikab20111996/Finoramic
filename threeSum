@@ -1,0 +1,21 @@
+int Solution::threeSumClosest(vector<int> &A, int B) {
+     sort( A.begin(), A.end());
+       long closetSum = INT_MAX;
+       long currentSum = 0;
+       if( A.size() < 3 )  return -1;
+       for ( int i = 0; i < A.size() - 2; i++){
+            int left = i + 1;
+            int right = A.size() - 1; 
+            while( left < right ){
+                currentSum = A[i] + A[left] + A[right];
+                if ( abs( B - closetSum ) > abs( B - currentSum )){
+                    closetSum = currentSum;
+                }
+                if( currentSum < B ){
+                    left++;
+                }
+                else right--;
+            }
+        }
+        return (int)closetSum;
+}
